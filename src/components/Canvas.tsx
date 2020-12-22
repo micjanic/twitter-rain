@@ -20,9 +20,15 @@ const Canvas = ({ width, height }: CanvasProps) => {
     if (!canvasRef.current) {
       return
     }
-
     const canvas = canvasRef.current;
-    contextRef.current = canvas.getContext('2d')
+    canvas.width = window.innerWidth * 2;
+    canvas.height = window.innerHeight * 2;
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+
+    const context = canvas.getContext('2d')
+    context.scale(2, 2)
+    contextRef.current = context
   })
 
   return <canvas ref={canvasRef} height={height} width={width} />
