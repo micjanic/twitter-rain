@@ -1,24 +1,28 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 interface CanvasProps {
   width: number;
   height: number;
 }
-
+/*
 type Coordinate = {
   x: number;
   y: number;
 }
-
+*/
 const Canvas = ({ width, height }: CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [digits, setDigits] = useState([])
-  const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined)
+  const contextRef = useRef<CanvasRenderingContext2D>(null)
+  //const [digits, setDigits] = useState([])
+  //const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined)
 
   useEffect(() => {
     if (!canvasRef.current) {
       return
     }
+
+    const canvas = canvasRef.current;
+    contextRef.current = canvas.getContext('2d')
   })
 
   return <canvas ref={canvasRef} height={height} width={width} />
