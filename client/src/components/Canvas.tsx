@@ -26,9 +26,12 @@ const Canvas = ({ width, height }: CanvasProps) => {
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
 
-    const context = canvas.getContext('2d')
-    context.scale(2, 2)
-    contextRef.current = context
+    const context = canvas.getContext('2d');
+    context.scale(2, 2);
+    context.fillStyle = "#FF0000";
+    context.fillRect(20, 20, 150, 100);
+    contextRef.current = context;
+
   })
 
   return <canvas ref={canvasRef} height={height} width={width} />

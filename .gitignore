@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/client/node_modules
+/server/node_modules
 /.pnp
 .pnp.js
 
@@ -23,3 +25,4 @@ yarn-debug.log*
 yarn-error.log*
 src/react-app-env.d.ts
 src/reportWebVitals.ts
+.env
