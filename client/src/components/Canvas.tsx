@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
+import { MAX_MESSAGES, FONT_SIZE, SPEED } from './constants/CONSTANTS'
 
 interface CanvasProps {
   width: number;
@@ -11,10 +12,13 @@ type Coordinate = {
 }
 */
 const Canvas = ({ width, height }: CanvasProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const contextRef = useRef<CanvasRenderingContext2D>(null)
-  //const [digits, setDigits] = useState([])
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const contextRef = useRef<CanvasRenderingContext2D>(null);
   //const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined)
+
+  const [columns, setColumns] = useState([]);
+  const [twitterMessages, setTwitterMessages] = useState([]);
+
 
   useEffect(() => {
     if (!canvasRef.current) {
@@ -31,6 +35,8 @@ const Canvas = ({ width, height }: CanvasProps) => {
     context.fillStyle = "#FF0000";
     context.fillRect(20, 20, 150, 100);
     contextRef.current = context;
+
+
 
   })
 
