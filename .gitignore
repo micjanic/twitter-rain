@@ -26,3 +26,4 @@ yarn-error.log*
 src/react-app-env.d.ts
 src/reportWebVitals.ts
 .env
+/server/.env
