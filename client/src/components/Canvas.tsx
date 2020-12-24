@@ -58,19 +58,26 @@ const Canvas = ({ width, height }: CanvasProps) => {
     const w = document.body.offsetWidth;
     const h = document.body.offsetHeight;
 
-    ctxRef.current.fillStyle = '#0001';
-    ctxRef.current.fillRect(0, 0, w, h);
+    //ctxRef.current.fillStyle = '#0001';
+    //ctxRef.current.fillRect(0, 0, w, h);
 
-    ctxRef.current.fillStyle = '#0f0';
-    ctxRef.current.font = `${FONT_SIZE}pt monospace`;
+    ctxRef.current.fillStyle = '#53db5e';
+    ctxRef.current.font = `bold ${FONT_SIZE}pt monospace`;
+    ctxRef.current.shadowBlur = 8;
+    ctxRef.current.shadowColor = "green";
 
     columns.forEach((y, ind) => {
       const text = String.fromCharCode(Math.random() * 128);
-      const x = ind * FONT_SIZE;
+      const x = (ind * FONT_SIZE);
       ctxRef.current.fillText(text, x, y);
       if (y > 100 + Math.random() * 10000) columns[ind] = 0;
       else columns[ind] = y + FONT_SIZE;
     });
+  }
+
+  const Column = () => {
+    //update()
+    //draw()
   }
 
   useInterval(() => {
