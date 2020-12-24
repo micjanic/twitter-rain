@@ -23,7 +23,7 @@ const Canvas = ({ width, height }: CanvasProps) => {
     "The quick brown fox jumps over the lazy dog.",
     "Look out! There are llamas!",
     "No, really, don't get up.",
-    "Howdy Ho Neightborino",
+    "Howdy Ho Neighborino",
     "Every day - if walking through the shops count as working out.",
     "It is a fair, even-handed, noble adjustment of things, that while there is infection in disease and sorrow, there is nothing in the world so irresistibly contagious as laughter and good humour.",
     "No space of regret can make amends for one lifes opportunity misused",
@@ -47,7 +47,7 @@ const Canvas = ({ width, height }: CanvasProps) => {
 
     const ctx = canvas.getContext('2d');
     ctx.scale(2, 2);
-    ctx.fillStyle = '#000'
+    ctx.fillStyle = '#0001'
     ctx.fillRect(0, 0, w, h);
     ctxRef.current = ctx;
 
@@ -58,26 +58,21 @@ const Canvas = ({ width, height }: CanvasProps) => {
     const w = document.body.offsetWidth;
     const h = document.body.offsetHeight;
 
-    //ctxRef.current.fillStyle = '#0001';
-    //ctxRef.current.fillRect(0, 0, w, h);
+    ctxRef.current.fillStyle = '#000';
+    ctxRef.current.fillRect(0, 0, w, h);
 
     ctxRef.current.fillStyle = '#53db5e';
     ctxRef.current.font = `bold ${FONT_SIZE}pt monospace`;
-    ctxRef.current.shadowBlur = 8;
-    ctxRef.current.shadowColor = "green";
+    //ctxRef.current.shadowBlur = 8;
+    //ctxRef.current.shadowColor = "green";
 
     columns.forEach((y, ind) => {
       const text = String.fromCharCode(Math.random() * 128);
       const x = (ind * FONT_SIZE);
       ctxRef.current.fillText(text, x, y);
-      if (y > 100 + Math.random() * 10000) columns[ind] = 0;
+      if (y > 100 + Math.random() * 50000) columns[ind] = 0;
       else columns[ind] = y + FONT_SIZE;
     });
-  }
-
-  const Column = () => {
-    //update()
-    //draw()
   }
 
   useInterval(() => {
