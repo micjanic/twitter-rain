@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { MAX_MESSAGES, FONT_SIZE, SPEED } from './constants/Constants'
 
+import Column from './Column'
+
 import { useInterval } from './hooks/useInterval'
 
 interface CanvasProps {
@@ -13,7 +15,7 @@ type Coordinate = {
   y: number;
 }
 */
-const Canvas = ({ width, height }: CanvasProps) => {
+const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D>(null);
   //const [mousePosition, setMousePosition] = useState<Coordinate | undefined>(undefined)
@@ -54,9 +56,11 @@ const Canvas = ({ width, height }: CanvasProps) => {
     setColumns(Array(Math.floor(w / FONT_SIZE) + 1).fill(0));
   }, [])
 
-  const rain = () => {
+  const draw = () => {
     const w = document.body.offsetWidth;
     const h = document.body.offsetHeight;
+
+    const ctx = ctxRef.current;
 
     ctxRef.current.fillStyle = '#000';
     ctxRef.current.fillRect(0, 0, w, h);
@@ -77,7 +81,7 @@ const Canvas = ({ width, height }: CanvasProps) => {
     rain()
   }, SPEED)
 
-  return <canvas ref={canvasRef} height={height} width={width} />
+  return <canvas ref={canvasRef} />
 }
 
 Canvas.defaultProps = {
