@@ -1,24 +1,14 @@
 export default function Column(ctx, data) {
-  let data = new Ball()
+  let data = new Columns()
   data.draw(ctx)
-  ballObj.x += ballObj.dx
-  ballObj.y += ballObj.dy
 }
 
-class Ball {
-  constructor(x, y, rad) {
-    this.x = x
-    this.y = y
-    this.rad = rad
+class Columns {
+  constructor(x, y) {
   }
 
   draw(ctx) {
     ctx.beginPath()
     ctx.fillStyle = 'red'
-    ctx.arc(this.x, this.y, this.rad, 0, 2 * Math.PI)
-    ctx.strokeStyle = 'black'
-    ctx.strokeWidth = 4
-    ctx.fill()
-    ctx.stroke()
   }
 }

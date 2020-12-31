@@ -1,20 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { MAX_MESSAGES, FONT_SIZE, SPEED } from './constants/Constants'
+import { FONT_SIZE, SPEED } from './constants/Constants'
 
-import Column from './Column'
+import Rain from './Rain'
 
 import { useInterval } from './hooks/useInterval'
 
-interface CanvasProps {
-  width: number;
-  height: number;
-}
-/*
-type Coordinate = {
-  x: number;
-  y: number;
-}
-*/
 const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D>(null);
@@ -39,8 +29,8 @@ const Canvas = () => {
     }
 
     const canvas = canvasRef.current;
-    const w = canvas.width = document.body.offsetWidth;
-    const h = canvas.height = document.body.offsetHeight;
+    const w = canvas.width = window.innerWidth;
+    const h = canvas.height = window.innerHeight;
 
     canvas.width = w * 2;
     canvas.height = h * 2;
@@ -56,37 +46,12 @@ const Canvas = () => {
     setColumns(Array(Math.floor(w / FONT_SIZE) + 1).fill(0));
   }, [])
 
-  const draw = () => {
-    const w = document.body.offsetWidth;
-    const h = document.body.offsetHeight;
-
-    const ctx = ctxRef.current;
-
-    ctxRef.current.fillStyle = '#000';
-    ctxRef.current.fillRect(0, 0, w, h);
-
-    ctxRef.current.fillStyle = '#53db5e';
-    ctxRef.current.font = `bold ${FONT_SIZE}pt monospace`;
-
-    columns.forEach((y, ind) => {
-      const text = String.fromCharCode(Math.random() * 128);
-      const x = (ind * FONT_SIZE);
-      ctxRef.current.fillText(text, x, y);
-      if (y > 100 + Math.random() * 60000) columns[ind] = 0;
-      else columns[ind] = y + FONT_SIZE;
-    });
-  }
 
   useInterval(() => {
-    rain()
+    Rain(ctxRef.current, columns)
   }, SPEED)
 
   return <canvas ref={canvasRef} />
-}
-
-Canvas.defaultProps = {
-  width: window.innerWidth,
-  height: window.innerHeight
 }
 
 export default Canvas
