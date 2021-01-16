@@ -1,9 +1,9 @@
 export default function Column(ctx, data) {
-  let data = new Columns()
-  data.draw(ctx)
+  let column = new Column()
+  column.draw(ctx)
 }
 
-class Columns {
+class Column {
   constructor(x, y) {
   }
 

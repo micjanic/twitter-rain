@@ -12,8 +12,11 @@ export default function Rain(ctx: CanvasRenderingContext2D, columns: number[]) {
 
   columns.forEach((y, ind) => {
     const text = String.fromCharCode(Math.random() * 128);
+
     const x = (ind * FONT_SIZE);
+
     ctx.fillText(text, x, y);
+
     if (y > 100 + Math.random() * 60000) columns[ind] = 0;
     else columns[ind] = y + FONT_SIZE;
   });
